@@ -38,16 +38,16 @@ export function fetchPostsAC () {
     return {
         type: REQUEST_POSTS
     }
-    // return async (dispatch) => {
-    //     try {
-    //         dispatch(showLoaderAC())
-    //         const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
-    //         const json = await response.json();
-    //         dispatch({type: FETCH_POSTS, payload: json})
-    //         dispatch(hideLoaderAC())
-    //     } catch (e) {
-    //         dispatch(showAlertAC("Что-то пошло не так"));
-    //         dispatch(hideLoaderAC())
-    //     }
-    // }
+    return async (dispatch) => {
+        try {
+            dispatch(showLoaderAC())
+            const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
+            const json = await response.json();
+            // dispatch({type: FETCH_POSTS, payload: json})
+            dispatch(hideLoaderAC())
+        } catch (e) {
+            dispatch(showAlertAC("Что-то пошло не так"));
+            dispatch(hideLoaderAC())
+        }
+    }
 }
